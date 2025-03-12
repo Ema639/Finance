@@ -2,12 +2,10 @@ from sqlalchemy import Column, Integer, String, Numeric, Text, ForeignKey, Enum,
 from sqlalchemy.orm import DeclarativeBase, relationship
 
 
-# Базовый класс
 class Base(DeclarativeBase):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
 
-# Таблица Пользователь
 class User(Base):
     __tablename__ = 'User'  # TODO назавание на англ
 
@@ -20,7 +18,6 @@ class User(Base):
     transactions = relationship('Transaction', back_populates='user', cascade="all, delete")
 
 
-# Таблица Категория
 class Category(Base):
     __tablename__ = 'Category'  # TODO назавание на англ
 
@@ -33,7 +30,6 @@ class Category(Base):
     transactions = relationship('Transaction', back_populates='category')
 
 
-# Таблица Транзакция
 class Transaction(Base):
     __tablename__ = 'Transaction'  # TODO назавание на англ
 
